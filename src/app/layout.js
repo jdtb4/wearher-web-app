@@ -1,6 +1,12 @@
 import Header from "./components/Header";
 import CityWeather from "./components/CityWeather";
 import "./globals.css";
+import { Koulen } from "@next/font/google";
+
+const koulen = Koulen({
+  weights: 400,
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "Wether.",
@@ -10,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body>
+      <body className={koulen.className}>
         <Header />
         <CityWeather />
         {children}
