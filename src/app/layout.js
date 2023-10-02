@@ -1,10 +1,10 @@
 import Header from "./components/Header";
 import CityWeather from "./components/CityWeather";
 import "./globals.css";
-import { Koulen } from "@next/font/google";
+import { Koulen } from "next/font/google";
 
 const koulen = Koulen({
-  weights: 400,
+  weight: "400",
   subsets: ["latin"],
 });
 
