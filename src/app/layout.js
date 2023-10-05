@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-import CityWeather from "./components/CityWeather";
 import "./globals.css";
 import { Koulen } from "next/font/google";
 
@@ -18,7 +17,6 @@ export default function RootLayout({ children }) {
     <html lang="es">
       <body className={koulen.className}>
         <Header />
-        <CityWeather />
         {children}
       </body>
     </html>
