@@ -2,23 +2,28 @@
 
 import { useState } from "react";
 import { IconSearch } from "@tabler/icons-react";
+import { useWeatherContext } from "src/context/weather";
 
 const Search = () => {
   const [city, setCity] = useState("");
+  const { setWeather } = useWeatherContext();
   const handleCityChange = (e) => {
     setCity(e.target.value);
   };
 
-  function searchWeather() {
-    const apiKey = "fb154294fc45dfa9596241167b0ac259";
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+  async function searchWeather() {
+    try {
+      const apiKey = "fb154294fc45dfa9596241167b0ac259";
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+      const res = await fetch(url);
 
-    if (city === "") return alert("Please enter a city name");
+      if (!res.ok) throw new Error("Something went wrong");
+
+      const data = await res.json();
+      setWeather(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
